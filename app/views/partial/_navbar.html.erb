@@ -16,13 +16,14 @@
       <ul class="nav navbar-nav navbar-right">
         <% if( !user_signed_in?) %>
           <%# ログインしていない時 %>
-          <li><a href="#">シッターになる</a></li>
+          <li><%= link_to "シッターになる" , new_listing_path %></li>
           <li><a href="#">利用の流れ</a></li>
           <li><%= link_to "アカウント作成", new_user_registration_path %></li>
           <li><%= link_to "ログイン", new_user_session_path %></li>
         <% else %>
           <%# ログインしている時 %>
           <li class="dropdown">
+           <li><%= link_to "シッターになる" , new_listing_path %></li>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.provider %>
                   <%# 認証ログインをしている時 %>
