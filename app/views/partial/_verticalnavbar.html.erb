@@ -21,7 +21,7 @@
         </li>
 
         <li class="<%= 'active' if controller?("listings") && controller.action_name == "photos" %>">
-          <%= link_to "写真", manage_listing_photos_path(@listing) %>
+           <%= link_to "写真", manage_listing_photos_path(@listing),data:{no_turbolink: true} %>
         </li>
 
         <li class="<%= 'active' if controller?("listings") && controller.action_name == "callender" %>">

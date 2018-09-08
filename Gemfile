@@ -24,6 +24,8 @@ gem 'aws-sdk', '~> 2.3'
 gem 'geocoder'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
+gem "paperclip", "~> 6.0.0"
+gem 'jquery-turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

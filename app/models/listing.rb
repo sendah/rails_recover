@@ -1,5 +1,6 @@
 class Listing < ApplicationRecord
   belongs_to :user
+  has_many :photos
   validates :home_type, presence: true
   validates :pet_type, presence: true
   validates :pet_size, presence: true
