@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180908055515) do
+ActiveRecord::Schema.define(version: 20180908113832) do
 
   create_table "listings", force: :cascade do |t|
     t.string "home_type"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180908055515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "listing_title"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -54,6 +56,20 @@ ActiveRecord::Schema.define(version: 20180908055515) do
     t.index ["user_id"], name: "index_registrations_on_user_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "listing_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "price_pernight"
+    t.integer "total_price"
+    t.boolean "self_booking"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_reservations_on_listing_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,6 +87,15 @@ ActiveRecord::Schema.define(version: 20180908055515) do
     t.string "uid"
     t.string "image"
     t.string "name"
+    t.string "publishable_key"
+    t.string "secret_key"
+    t.string "stripe_user_id"
+    t.string "currency"
+    t.string "stripe_account_type"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

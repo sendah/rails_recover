@@ -55,14 +55,15 @@ class ListingsController < ApplicationController
   end
 
   def bankaccount
+    @user = @listing.user
+    session[:listing_id] = @listing.id
   end
 
   def publish
   end
 
   private
-  def listing_params
-    params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight)
+  def listing_paramsparams.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight, :address, :listing_title, :listing_content, :active)params.require(:listing).permit(:home_type, :pet_type, :breeding_years, :pet_size, :price_pernight)
   end
 
   def set_listing
