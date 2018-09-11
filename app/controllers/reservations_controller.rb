@@ -1,4 +1,14 @@
 class ReservationsController < ApplicationController
+
+  def new
+    @listing = Listing.find(params[:listing_id])
+    @user = current_user
+
+    @start_date = params[:reservation][:start_date]
+    @end_date =  params[:reservation][:end_date]
+    @price_pernight =  params[:reservation][:price_pernight]
+    @total_price =  params[:reservation][:total_price]
+  end
   
   def index
     @reservations = current_user.reservations.where(self_booking: nil) 
@@ -43,10 +53,31 @@ class ReservationsController < ApplicationController
         end
       end
       
-      redirect_to :back, notice: "更新しました。" 
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = '更新できました'
 
     else
+      user = @listing.user
+      amount = params[:reservation][:total_price]
+
+      begin
+        charge_attrs = {
+          amount: amount,
+          currency: user.currency,
+          source: params[:token],
+          description: "Test Charge via Stripe Connect"
+        }
+        charge_attrs[:destination] = user.stripe_user_id
         
+        charge = Stripe::Charge.create( charge_attrs )
+
+        #have to edit view template to show html in flash
+        flash[:notice] = "Charged successfully!"
+
+      rescue Stripe::CardError => e
+        error = e.json_body[:error][:message]
+        flash[:error] = "Charge failed! #{error}"
+      end
       # 予約をパラメーター付与して作成
       @reservation = current_user.reservations.create(reservation_params)          
       redirect_to @reservation.listing, notice: "予約が完了しました。" 

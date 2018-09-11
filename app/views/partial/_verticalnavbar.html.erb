@@ -25,7 +25,7 @@
         </li>
 
         <li class="<%= 'active' if controller?("listings") && controller.action_name == "callender" %>">
-          <%= link_to "カレンダー", manage_listing_calender_path(@listing) %>
+          <%= link_to "カレンダー", manage_listing_calendar_path(@listing) %>
         </li>
 
         <li class="<%= 'active' if controller?("listings") && controller.action_name == "bankaccount" %>">

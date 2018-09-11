@@ -15,4 +15,7 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
+  def connected?
+    !stripe_user_id.nil?
+  end
 end

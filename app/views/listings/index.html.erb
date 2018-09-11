@@ -21,7 +21,9 @@
                             <div class="col-sm-7 col-lg-7 col-middle row-space-2">
                                 <span class="listing-title"><%= listing.listing_title %></span>
                             </div>
-                            
+                            <div class="col-md-3 col-sm-3 col-middle row-space-1">
+                                <%= link_to "予約可能一覧", listing_path(listing), class: "btn btn-primary pull-right" %>
+                            </div>
                             <div class="col-md-3 col-sm-3 col-middle row-space-1">
                                 <%= link_to "残り5ステップ", manage_listing_basics_path(listing), class: "btn btn-primary pull-right" %>
                             </div>
