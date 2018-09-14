@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  
+
   resources :listings
 
   root :to => 'pages#index'
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
 
   resources :listings do 
     resources :reservations, only: [:new, :create]
+  end
+
+  resources :listings do
+    resources :reviews, only: [:create, :destroy]
   end
 
   get '/setdate' => 'reservations#setdate'
@@ -36,4 +41,5 @@ Rails.application.routes.draw do
   get '/connect/confirm' => 'stripe#confirm', as: 'stripe_confirm'
   get '/connect/deauthorize' => 'stripe#deauthorize', as: 'stripe_deauthorize'
   
+  get '/not_checked' => 'listings#not_checked'
 end

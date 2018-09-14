@@ -59,13 +59,14 @@ class ReservationsController < ApplicationController
     else
       user = @listing.user
       amount = params[:reservation][:total_price]
-
+      fee = (amount.to_i * 0.1).to_i
       begin
         charge_attrs = {
           amount: amount,
           currency: user.currency,
           source: params[:token],
-          description: "Test Charge via Stripe Connect"
+          description: "Test Charge via Stripe Connect",
+          application_fee: fee
         }
         charge_attrs[:destination] = user.stripe_user_id
         

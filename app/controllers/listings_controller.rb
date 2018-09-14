@@ -9,6 +9,12 @@ class ListingsController < ApplicationController
 
   def show
     @photos = @listing.photos
+
+    @currentUserBooking = Reservation.where("listing_id = ? AND user_id = ?",@listing.id,current_user.id).present? if current_user
+     
+    @reviews = @listing.reviews
+     
+    @currentUserReview = @reviews.find_by(user_id:  current_user.id) if current_user
   end
 
   def new
@@ -65,6 +71,12 @@ class ListingsController < ApplicationController
   def publish
   end
 
+  def not_checked
+    @listing = Listing.find(params[:listing_id])
+    @listing.update(not_checked: params[:not_checked])
+    render :nothing => true
+  end
+  
   def access_deny
     if !(current_user == @listing.user)
       redirect_to root_path, notice: "他人の編集ページにはアクセスできません"
