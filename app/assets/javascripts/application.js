@@ -18,3 +18,4 @@
 //= require jquery-ui/widgets/datepicker
 //= require toastr
 //= require dropzone
+//= require jquery.raty
