@@ -11,7 +11,4 @@ class Listing < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
 
-  def average_star_rate
-    reviews.count == 0 ? 0 : reviews.average(:rate).round(1)
-  end
 end

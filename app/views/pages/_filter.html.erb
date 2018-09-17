@@ -1,5 +1,5 @@
 <!-- Search Form -->
-<%= search_form_for @search, url:seaech_path do |f| %>
+<%= search_form_for @search, url:search_path do |f| %>
   <div class="fillter">
     <div class="row filter-section">
       <div class="col-md-1 text-center col-md-offset-1">
@@ -64,7 +64,7 @@
     </div>
 
     <div class="row filter-section">
-      <div class="col-md-3">
+      <div class="col-md-3 col-md-offset-6">
         <%= f.submit "Re-search", class: "btn btn-danger" %>
       </div>
     </div>    

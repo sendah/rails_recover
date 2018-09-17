@@ -24,14 +24,5 @@ $('#search-result').html("<%= j render 'pages/list' %>");
 
      infowindow.open(map, this);
      infowindows.push(infowindow);
-
-     //infowindowが完全に読み込まれた時に実行される処理
-     google.maps.event.addListener(infowindow, 'domready', function() {
-       $('.average_rating_listing').raty({
-         path: '/assets',
-         readOnly: true,
-         score: <%= listing.average_star_rate %>
-       });
-     });
    });
  <% end %> 
