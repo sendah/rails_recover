@@ -90,6 +90,11 @@ GEM
       rails (> 3.1)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_girl (4.9.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.9.0)
+      factory_girl (~> 4.9.0)
+      railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
@@ -295,6 +300,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.4.3)
   dropzonejs-rails
+  factory_girl_rails
   figaro (~> 1.1.0)
   geocoder
   jbuilder (~> 2.5)
