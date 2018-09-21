@@ -56,17 +56,14 @@
       </div>
       <div class="row text-center">
         <div class="col-md-4">
-          <%= image_tag 'search-icon'%>
           <h4 class="service-heading">探す</h4>
           <p class="text-muted hidden-xs">まず、ペットを預けるペットシッターをこのサイトで検索しましょう。</p>
         </div>
         <div class="col-md-4">
-          <%= image_tag 'calendar-icon'%>
           <h4 class="service-heading">予約する</h4>
           <p class="text-muted hidden-xs">いいなと思うペットシッターがいたら、ペットを預けたい日にちを予約しましょう。</p>
         </div>
         <div class="col-md-4">
-          <%= image_tag 'home-icon'%>
           <h4 class="service-heading">預ける</h4>
           <p class="text-muted hidden-xs">予約した日の当日になったら、ペットを預けて、自分たちの時間を楽しみましょう！</p>
         </div>
@@ -89,10 +86,8 @@
           <% if !user.listings.blank?%>
             <div class="col-md-4 col-sm-6 portfolio-item row-space-2">
               <%= link_to listing_path(user.listings[0]) do %>
-                <%= image_tag user.listings[0].photos[0].image.url(:medium) %>
               <% end %>
               <div class="portfolio-caption">
-                <%= image_tag user.image,class:"img-circle profile-1"%>
                 <span style="font-weight: bold;"><%= user.name %>さん</span>
               </div>
             </div>
